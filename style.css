@@ -1,0 +1,20 @@
+/*
+Theme Name:     Director
+Theme URI:      http://www.envato.com
+Description:    A Business Directory Theme
+Version:        1.0
+Author:         Tony Edwards
+Author URI:     http://www.purelywebdesign.co.uk
+*/
+
+
+/***All of the CSS***/
+
+/* import stylesheets and hide from ie/mac \*/
+@import url("css/reset.css");
+@import url("css/master.css");
+@import url("css/ie.css");
+/* end import/hide */
+
+
+
