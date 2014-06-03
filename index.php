@@ -17,7 +17,7 @@
 
         <div class="navi">
             <div class="right">    
-                <?php previous_posts_link('Previous'); ?> / <?php next_posts_link('Next'); ?>           
+                <?php previous_posts_link('Previous'); ?> / <?php next_posts_link('Next'); ?>          
             </div>
         </div>
     </div>

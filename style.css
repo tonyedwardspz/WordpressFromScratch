@@ -7,14 +7,413 @@ Author:         Tony Edwards
 Author URI:     http://www.purelywebdesign.co.uk
 */
 
-
-/***All of the CSS***/
-
 /* import stylesheets and hide from ie/mac \*/
-@import url("css/reset.css");
-@import url("css/master.css");
 @import url("css/ie.css");
 /* end import/hide */
+
+/**Normalize.css**/
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none}[hidden]{display:none}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}body,button,input,select,textarea{font-family:sans-serif}a{color:#00e}a:visited{color:#551a8b}a:focus{outline:thin dotted}a:hover,a:active{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}blockquote{margin:1em 40px}dfn{font-style:italic}mark{background:#ff0;color:#000}pre,code,kbd,samp{font-family:monospace,serif;_font-family:'courier new',monospace;font-size:1em}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word}q{quotes:none}q:before,q:after{content:'';content:none}small{font-size:75%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}ul,ol{margin:1em 0;padding:0 0 0 40px}dd{margin:0 0 0 40px}nav ul,nav ol{list-style:none;list-style-image:none}img{border:0;-ms-interpolation-mode:bicubic}svg:not(:root){overflow:hidden}figure{margin:0}form{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;*margin-left:-7px}button,input,select,textarea{font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}button,input{line-height:normal}button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;*overflow:visible}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+
+
+/* General XHTML Markup */
+body{
+font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+background: url('css/img/bg.jpg');
+text-align: center;
+color: #FFFFFF;
+font-size: 62.5%;
+margin-top: 10px;
+}
+
+a{ 
+font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+font-weight: bold;
+color: #c94623;
+text-transform: uppercase;
+text-decoration: none;
+}
+
+a:hover{ 
+color: #f76d36;
+}
+
+a img { border: none; }
+
+address{
+font-weight: bold; 
+}
+
+blockquote{
+font-weight: bold;
+font-style: italic;
+margin-left: 30px;
+line-height: 1.25em;
+}
+
+code{ 
+font-family: Courier, monospace;
+}
+
+dt{
+margin-left: 15px;
+font-weight: bold;
+}
+
+dd{
+margin: 15px 0 15px 30px;
+}
+
+em{ font-style: italic; }
+
+form{
+text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6{
+font-weight: bold;
+margin: 15px;
+}
+
+.hide { display: none; }
+
+p{ line-height: 1.25em; margin: 15px; font-size: 1em;}
+
+strong{ font-weight: bold; }
+
+ul li, ol li{
+margin: 15px 0 0 30px;
+}
+
+
+/**LAYOUT STUFF (order of appearance)**/
+
+#wrap{
+background: #FFFFFF;
+color: #333333;
+font-size: 1.4em;
+}
+
+
+#container{
+margin: 0 auto;
+text-align: left;
+width: 70%; /* Target: 940px; */
+padding: 10px 0;
+}
+
+
+
+/****** Header Information ****/
+header{
+text-align: left;
+}
+
+
+header h1{
+float: left; 
+padding: 0;
+margin: 0;
+}
+
+
+
+
+header nav{
+    font-size: 0.9em; /* ~11pt */
+    margin: 10px 0 0 0.03em; /* 33px */
+    float: left;
+    display: inline-block;
+}
+
+header nav ul{
+    position: relative;
+}
+
+header nav ul li{
+    display: block;
+    float:left; 
+    margin: 2px 0 2px 30px;
+    padding-top: 8px;
+    padding-bottom: 12px;
+}
+
+header ul li ul { 
+    display: none; 
+    position: absolute; 
+    padding-left: 0;
+    background-color: #fff;
+} 
+
+header ul li:hover ul { 
+    display: block;
+    z-index:1;
+    border: 1px solid #e5e5e5;
+}
+
+header ul li:hover ul li,{
+    display: block;
+}
+
+
+
+header .searchbar{
+float: right;
+padding-top: 15px;
+}
+
+header .searchbar input{
+background: #3e3e3e;
+color: #FFFFFF;
+font-style: italic;
+font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+padding: 5px;
+border: 0;
+margin: 0;
+display: inline;
+}
+
+header .searchbar input[type="text"]{
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+
+header .searchbar input[type="submit"]{
+background:  #f76d36 url('css/img/search.jpg') center no-repeat;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+text-indent: -99999px;
+width: 33px;
+margin-left: -10px;
+}
+
+#featured{
+padding-bottom: 32px;
+}
+
+hr{
+background:url('css/img/bg.jpg') top center;
+height: 5px;
+border: none;
+display: block;
+}
+
+#featured .business-info h3, .widget h3, #business-listing .info h3{
+margin: 0; padding: 0;
+font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+font-weight: bold;
+font-size: 0.9em;
+text-transform: uppercase;
+}
+
+#featured .business-info h2{
+margin: 0; padding: 0;
+color: #c94623;
+font-size: 1.29em;
+}
+
+#featured .business-info p, .widget p{
+padding: 0;
+margin: 0 0 30px 0;
+}
+
+#featured .main{
+width: 66%;
+height: 270px;
+overflow: hidden;
+background: #CFCFCF;
+}
+
+#posts, .widget, #blog .post{
+border-top: 4px #d4d4d4 double;	
+}
+
+#posts a.visit{
+border-top: 1px #d4d4d4 solid;
+border-bottom: 1px #d4d4d4 solid;
+padding: 13px 5px;
+display: block;
+}
+
+.post{
+margin: 15px 0 30px 0;
+}
+
+
+.post h2, .business h2{
+margin: 0; padding: 0;
+
+}
+
+.post h3{
+margin: 0; padding: 0;
+font-size: 1.29em;
+}
+
+
+.post .byline{
+font-style: italic;
+font-size: 0.9em;
+color: #989898;
+}
+
+.post .byline a{
+font-style: normal;
+}
+
+.post p, .business p{
+margin: 10px 0 0 0;
+padding: 0;
+}
+
+#blog .post{
+margin-top: 0;
+padding-top: 15px;
+}
+
+
+#business-listing{
+padding-top: 30px;
+}
+
+#business-listing .main p{
+margin: 15px 0;
+}
+
+#business-listing .info p{
+padding: 0;
+margin: 30px 0;
+}
+
+#business-listing .info a{
+font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+text-transform: none;
+}
+
+.navi{
+font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+text-transform: uppercase;
+font-weight: bold;
+margin-top: 15px;
+}
+
+#directory .business{
+padding: 30px 0;
+border-bottom: 1px solid #d4d4d4;
+}
+
+#directory .business .info{
+width: 61%;
+margin-left: 3%;
+float: right;
+}
+
+#directory .business img{
+width: 35%;
+display: block;
+}
+
+#directory .business .contact{
+margin: 30px 0 15px 0;
+}
+
+
+.navi ul.pages{
+margin: 0; padding: 0;
+}
+
+.navi ul.pages li{
+display: inline;
+margin: 5px;
+}
+
+.widget{
+padding-top: 15px;
+}
+
+
+footer{
+color: #FFFFFF;
+font-size: 1.4em;
+text-align: left;
+width: 80%;
+margin: 0 auto;
+}
+
+footer a{
+color: #FFFFFF;
+}
+
+footer a:hover{
+color: #CFCFCF;
+}
+
+/**GENERAL CLASSES (alpha order)**/
+
+.left-col{
+width: 66%;
+float: left;
+}
+
+.right-col{
+float: right;
+width: 32%;
+margin-left: 2%;
+}
+
+/* self-clear floats */
+
+.group:after {
+	content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+
+/* Added CSS */
+
+img.centered, .aligncenter, div.aligncenter{
+    display:block;
+    margin: 0 auto;
+}
+
+.left, .alignleft{
+float: left;
+}
+
+.right, .alignright{
+float: right;
+}
+
+.wp-caption {
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #d4d4d4;
+    padding-top: 4px;
+    margin: 10px;
+}
+
+wp-caption img {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+}
+
+.wp-caption p.wp-caption-text {
+    font-size: 0.85em;
+    line-height:  1.214em;
+    padding: 0 4px 5px;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
 
 
 
