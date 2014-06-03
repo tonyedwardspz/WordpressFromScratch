@@ -236,6 +236,7 @@ display: block;
 
 .post{
 margin: 15px 0 30px 0;
+    overflow: hidden;
 }
 
 
