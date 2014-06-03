@@ -19,7 +19,7 @@ if (function_exists('register_sidebar')){
         'description' =>__('The primary widget area', 'dir'),
         'before_widget' => '<div class="widget">',
         'after_widget' => "</div>",
-        'before_title' => '<h3 class="widget-title>',
+        'before_title' => '<h3 class="widget-title">',
         'after_title' => '</h3>',
     ));
 }
