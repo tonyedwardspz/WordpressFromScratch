@@ -1,4 +1,3 @@
-
 <?php
 define( 'TEMPPATH', get_bloginfo('stylesheet_directory'));
 define( 'IMAGES', TEMPPATH. "/images");
@@ -26,7 +25,7 @@ if (function_exists('register_sidebar')){
 
 ?>
 
-
+require_once('business-manager.php);
 
 
 
