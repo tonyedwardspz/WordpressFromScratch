@@ -48,8 +48,92 @@ function business_manager_add_meta(){
         'high');
 }
 
+function business_manager_meta_options(){
+    //Get the post array
+    global $post;
+    
+    //If wordpress is autosaving, abandon function
+    if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+        return $post_id;
+    //Retrieve any pre existing data
+    $custom = get_post_custom($post->ID);
+    $address = $custom['address'][0];
+    $address_two = $custom['address_two'][0];
+    $city = $custom['city'][0];
+    $state = $custom['state'][0];
+    $postcode = $custom['Postcode'][0];
+    $website = $custom['website'][0];
+    $phone = custom['phone'][0];
+    $email = $custom['email'][0];
+?>
+ 
+<style type="text/css"><?php include('business-manager.css');?></style>
+<div class="business_manager_extras">
+    <?php $website = ($website == "") ? "http://" : $website; ?>
+    
+    <div>
+        <label>Website:</label><input name="website" value="<?php echo $website; ?>"/>
+    </div>
+    <div>
+        <label>Phone:</label><input name="phone" value="<?php echo $phone; ?>"/>
+    </div>
+    <div>
+        <label>Email:</label><input name="email" value="<?php echo $email; ?>"/>
+    </div>
+    <div>
+        <label>Address:</label><input name="address" value="<?php echo $address; ?>"/>
+    </div>
+    <div>
+        <label>Address 2:</label><input name="address_two" value="<?php echo $address_two; ?>"/>
+    </div>
+    <div>
+        <label>City:</label><input name="city" value="<?php echo $city; ?>"/>
+    </div>
+    <div>
+        <label>State:</label><input name="state" value="<?php echo $state; ?>"/>
+    </div>
+    <div>
+        <label>Postcode:</label><input name="postcode" value="<?php echo $postcode; ?>"/>
+    </div>
+</div>
 
+<? php
+}
 
+add_action('save_post', 'business_manager_save_extras');
 
+function business_manager_save_extras(){
+    global $post;
+    
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ){
+        return $post_id;
+    }
+    else{
+        //If wordpress is not autosaving, save the custon fields
+        update_post_meta($post -> ID, 'website', $_POST['website']);
+        update_post_meta($post -> ID, 'city', $_POST['city']);
+        update_post_meta($post -> ID, 'state', $_POST['state']);
+        update_post_meta($post -> ID, 'address', $_POST['address']);
+        update_post_meta($post -> ID, 'address_two', $_POST['address_two']);
+        update_post_meta($post -> ID, 'postcode', $_POST['postcode']);
+        update_post_meta($post -> ID, 'phone', $_POST['phone']);
+        update_post_meta($post -> ID, 'email', $_POST['email']);
+    }
+}
 
-}?>
+//Modify columns in the admin display
+add filter('manage_edit-businesses_coulumns", "business_manager_edit_coulumns');
+
+function business_manager_edit_coulumns($columns){
+    $columns = array(
+        'cb' => "<input type=\"checkbox\" />",
+        'title' => 'Business Name',
+        'description' => 'Description',
+        'address' => 'Address',
+        'phone' => 'Phone',
+        'email' => 'Email',
+        'website' => 'website',
+        'cat' => 'Category',
+    );
+    return $columns;
+}
