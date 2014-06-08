@@ -12,7 +12,7 @@ function business_manager_register(){
         'public' => true,
         'show_ui' => true,
         'capability_type' => 'post',
-        'heirarchical' => 'true'
+        'heirarchical' => 'true',
         'has_archive' => 'true',
         'supports' => array('title', 'editor', 'thumbnail'),
         'rewrite' => array('slug' => 'business' , 'width_front' => false),);
@@ -63,7 +63,7 @@ function business_manager_meta_options(){
     $state = $custom['state'][0];
     $postcode = $custom['Postcode'][0];
     $website = $custom['website'][0];
-    $phone = custom['phone'][0];
+    $phone = $custom['phone'][0];
     $email = $custom['email'][0];
 ?>
  
@@ -97,7 +97,7 @@ function business_manager_meta_options(){
     </div>
 </div>
 
-<? php
+<?php
 }
 
 add_action('save_post', 'business_manager_save_extras');
@@ -122,9 +122,9 @@ function business_manager_save_extras(){
 }
 
 //Modify columns in the admin display
-add filter('manage_edit-businesses_coulumns", "business_manager_edit_coulumns');
+add_filter('manage_edit-businesses_columns', 'business_manager_edit_columns');
 
-function business_manager_edit_coulumns($columns){
+function business_manager_edit_columns($columns){
     $columns = array(
         'cb' => "<input type=\"checkbox\" />",
         'title' => 'Business Name',
@@ -137,3 +137,37 @@ function business_manager_edit_coulumns($columns){
     );
     return $columns;
 }
+
+add_action('manage_businesses_posts_custom_column', 'business_manager_custom_columns');
+
+function business_manager_custom_columns($column){
+    global $post;
+    $custom = get_post_custom();
+    switch ($column)
+    {
+        case 'description':
+            the_excerpt();
+            break;
+        case 'address':
+            $address= $custom['address'][0].'<br/>';
+            if ($custom['address_two'][0] != ""){
+                $address.= $custom['address_two'][0]. '<br/>';
+            }
+            $address.= $custom['city'][0].', ' .$custom['state'][0].' '.$custom['zip'][0];
+            echo $address;
+            break;
+        case 'phone':
+            echo $custom['phone'][0];
+            break;
+        case 'email':
+            echo $custom['email'][0];
+            break;
+        case 'website':
+            echo $custom['website'][0];
+            break;
+        case 'cat':
+            echo get_the_term_list($post->ID, 'business-type');
+            break;
+    }
+}
+?>
