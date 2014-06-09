@@ -20,6 +20,7 @@
                 <?php previous_posts_link('Previous'); ?> / <?php next_posts_link('Next'); ?>          
             </div>
         </div>
+        
     </div>
     <?php get_sidebar(); ?>
 </div>
