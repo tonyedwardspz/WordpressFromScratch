@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+//Begin the loop
 <?php if (have_posts()) :  while (have_posts()) : the_post(); ?>
 
 <?php 
@@ -77,6 +78,7 @@
     </div>  
 </div>
 
+// End the loop
 <?php endwhile; else: ?>
     <p><?php _e('No posts were found. Sorry!'); ?></p>
 <?php endif; ?>

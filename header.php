@@ -27,7 +27,6 @@
 				
 			</header>
 			
-			<!-- End Header -->
-			<hr/>
-			<!-- Main Area -->
+			<?php if(!is_front_page()) : ?> <hr/> <?php endif; ?>
+			
 			<div id="content" class="group">

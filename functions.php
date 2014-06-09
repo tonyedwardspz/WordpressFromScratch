@@ -12,9 +12,7 @@ if ( function_exists( 'register_nav_menus' ) ) {
 	);
 }
 
-
-/*****Sidebars!******/
-
+//Create the sidebar
 if ( function_exists( 'register_sidebar' ) ) {
 
 	register_sidebar( array (
@@ -37,5 +35,11 @@ function director_rewrite() {
     add_rewrite_rule('typename/([0-9]{4})/(.+)/?$', 'index.php?typename=$matches[2]', 'top');
     $wp_rewrite->flush_rules(); // !!!
 }
+
+//add a continue link at the end of a post listing
+function director_excerpt_more($more) {
+    return '<a href="'.get_permalink().'">Continue...</a>';
+}
+add_filter('excerpt_more', 'director_excerpt_more', 999);
 
 ?>
