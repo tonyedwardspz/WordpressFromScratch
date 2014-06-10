@@ -19,7 +19,9 @@
 		<div id="container" class="group">
 			<!--Header - Name of Item Here-->            
 			<header class="group">
-				<h1><img src="<?php print IMAGES; ?>/logo.png" alt="<?php bloginfo('name'); ?>" /></h1>
+                
+                <?php $logo= get_option('director_logo', IMAGES.'/logo.png'); ?>
+				<h1><img src="<?php echo $logo; ?>" alt="<?php bloginfo('name'); ?>" /></h1>
 				
 				<?php get_search_form(); ?>
 				
