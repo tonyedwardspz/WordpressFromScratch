@@ -416,7 +416,10 @@ wp-caption img {
     margin: 0;
 }
 
-
+.social li{
+    display: inline-block;
+    float: right;
+}
 
 
 
