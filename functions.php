@@ -28,6 +28,7 @@ if ( function_exists( 'register_sidebar' ) ) {
 
 require_once('business-manager.php');
 require_once('theme-options.php');
+require_once('director-widgets.php');
 
 add_action('init', 'director_rewrite');
 function director_rewrite() {

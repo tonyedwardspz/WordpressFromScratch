@@ -78,7 +78,6 @@
     </div>  
 </div>
 
-// End the loop
 <?php endwhile; else: ?>
     <p><?php _e('No posts were found. Sorry!'); ?></p>
 <?php endif; ?>
