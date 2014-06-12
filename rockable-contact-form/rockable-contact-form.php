@@ -50,3 +50,9 @@ function rcf_insert_form($atts, $content=null){
     return $form;
 }
 add_shortcode('rcf_form', 'rcf_insert_form');
+
+function rcf_get_form($sendto = '', $subject = ''){
+    $sendto = ($sendto == '') ? get_bloginfo('admin_email') : $sendto;
+    $subject = ($subject == '') ? 'Contact Form form' . get_bloginfo('name') : $subject;
+    print rcf_build_form($sendto, $subject);
+}
