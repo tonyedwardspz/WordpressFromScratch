@@ -63,7 +63,7 @@ function director_settings_page() {
                 <th scope="row">Display RSS Icon:</th>
                 <td>
                     <input type="checkbox" name="director_rss" value="<?php 
-                        if (get_option('director_logo') == true){
+                        if (get_option('director_rss') == true){
                             print 'checked';
                         } ?>" />
                 </td>
